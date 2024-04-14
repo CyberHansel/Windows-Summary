@@ -1,0 +1,28 @@
+* Remote Desktop Protocol (RDP): Users can use RDP to connect to a remote PC over a network connection. This requires the user to have appropriate permissions on the remote PC and typically involves providing a username and password.
+   - Used by Remote Desktop Services (RDS), 
+   - Remote Desktop Web Access (RD Web Access) allows users to access RemoteApp and Desktop Connection through a web browser. Users can launch applications or desktops published on a Remote Desktop Session Host
+     (RD Session Host) server without requiring a full RDP connection,
+   - Remote Desktop Gateway (RD Gateway), and direct RDP connections.
+   - 
+* Remote Desktop Connection Broker (RD Connection Broker): RD Connection Broker is a role service in Windows Server that enables users to reconnect to their existing sessions in a load-balanced RD Session Host server farm. 
+                                                           It helps ensure session persistence and load balancing for remote desktop connections.
+* Windows PowerShell Remoting: Relies on WS-Management (WSMan) protocol, which uses SOAP over HTTP/HTTPS, for communication between computers.
+* Windows Management Instrumentation (WMI): remotely manage Windows computers. This requires appropriate permissions and authentication credentials. Uses DCOM (Distributed Component Object Model) for communication between WMI clients and servers.
+* Windows Remote Management (WinRM): WinRM uses the WS-Management protocol (WSMan), which uses SOAP over HTTP/HTTPS
+* Service Accounts:
+* Kerberos Authentication:  Kerberos protocol
+* NTLM Authentication:
+* SSH (Secure Shell):
+* Smart Card Authentication: Utilizes the PKCS#11 protocol
+* Certificate-based Authentication: Relies on SSL/TLS for secure communication and certificate-based authentication.
+* Web-based Remote Access: uses HTTPS, which is based on SSL/TLS,
+* Third-party Remote Access Tools:  TeamViewer, AnyDesk, or LogMeIn. 
+* Group Policy Preferences: Administrators can configure Group Policy Preferences to automatically map network drives, printers, and other resources for users based on their group membership or other criteria when they log in to a domain-joined PC.
+                            Relies on SMB (Server Message Block) protocol for accessing and configuring resources on remote computers.
+* Cached Credentials
+* Remote Desktop Gateway (RD Gateway): RD Gateway is a role service in Windows Server that enables authorized remote users to connect to resources on an internal corporate or private network over the internet, using RDP.
+* Azure Active Directory (Azure AD) Join:
+* Remote Desktop Web Access (RD Web Access): allows users to access RemoteApp and Desktop Connection through a web browser. Users can launch applications or desktops published on a Remote Desktop Session Host (RD Session Host) 
+                                             server without requiring a full RDP connection.
+
+
