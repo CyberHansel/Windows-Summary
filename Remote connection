@@ -69,6 +69,8 @@ OR
 More secure alternative to WMI is CIM (Common Information Model) CimCmdlets module. CIM operates over the WSMan (Windows Remote Management) protocol, which provides secure and standardized communication channels for remote management tasks.
 CIM operates over standard HTTP(S) ports (typically 5985 for HTTP and 5986 for HTTPS), compared to the dynamic RPC ports used by WMI.
 
+
+
 #######
 
     PSRemoting:
