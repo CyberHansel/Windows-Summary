@@ -4,9 +4,18 @@
      (RD Session Host) server without requiring a full RDP connection,
    - Remote Desktop Gateway (RD Gateway), and direct RDP connections.
    - 
+
 * Remote Desktop Connection Broker (RD Connection Broker): RD Connection Broker is a role service in Windows Server that enables users to reconnect to their existing sessions in a load-balanced RD Session Host server farm. 
                                                            It helps ensure session persistence and load balancing for remote desktop connections.
+
 * Windows PowerShell Remoting: Relies on WS-Management (WSMan) protocol, which uses SOAP over HTTP/HTTPS, for communication between computers.
+PSRemoting:
+- Enter-PSSession, Invoke-Command, and New-PSSession    ; (leverages the WinRM protocol for communication between the local and remote machines) 
+- New-ADUser, Get-ADComputer, and Set-ADUser            ; The Active Directory module (part of the Remote Server Administration Tools) 
+ 
+Active Directory module Get-ADUser, Get-ADComputer, Get-ADGroup, New-ADUser, Set-ADUser, etc., use the LDAP protocol to communicate with domain controllers and query or modify Active Directory objects.
+
+
 * Windows Management Instrumentation (WMI): remotely manage Windows computers. This requires appropriate permissions and authentication credentials. Uses DCOM (Distributed Component Object Model) for communication between WMI clients and servers.
 * Windows Remote Management (WinRM): WinRM uses the WS-Management protocol (WSMan), which uses SOAP over HTTP/HTTPS
 * Service Accounts:
@@ -26,8 +35,9 @@
                                              server without requiring a full RDP connection.
 
 
-DAP (Lightweight Directory Access Protocol): LDAP is used for querying and modifying directory services, such as AD, which stores usr acc information in a domain environment. While not typically used directly for user login, LDAP is fundamental
-                                             for authentication and authorization processes in Windows domains.
+
+Active Directory Users and Computers (ADUC): 
+LDAP used for querying and modifying directory services, such as AD, which stores usr acc information in a domain environment. While not typically used directly for user login, LDAP is fundamental for authentication and authorization processes in Windows domains.
 
 SAML (Security Assertion Markup Language): SAML is an XML-based protocol used for exchanging authentication and authorization data between identity providers and service providers. In some scenarios, particularly with 
 federated identity solutions, SAML can be used for single sign-on (SSO) to authenticate users across different domains or applications.
@@ -48,8 +58,47 @@ WS-Federation (Web Services Federation): WS-Federation is a protocol extension t
 3It enables cross-domain authentication and single sign-on between different security domains.
 
 
+########
+#######
+#####
+WMI deprecated
+* The PowerShell Management Libraries
+- Microsoft.Management.Infrastructure (MI) (WSMan) (Windows Remote Management) protocol, which provides better security features, such as encryption, authentication, and message integrity. WSMan is designed with security in mind and is considered more secure than DCOM/RPC (WMI uses this) for remote management tasks. is cross-platform management library that provides a standardized API for managing resources in Windows and non-Windows environments. Designed to replace the older WMI (Windows Management Instrumentation) infrastructure and offers improved performance, scalability, and compatibility. 
+- System.Management.Automation (SMA),  primarily used for creating programs or applications that leverage PowerShell scripting capabilities. 
+OR
+More secure alternative to WMI is CIM (Common Information Model) CimCmdlets module. CIM operates over the WSMan (Windows Remote Management) protocol, which provides secure and standardized communication channels for remote management tasks.
+CIM operates over standard HTTP(S) ports (typically 5985 for HTTP and 5986 for HTTPS), compared to the dynamic RPC ports used by WMI.
+
+#######
+
+    PSRemoting:
+        PowerShell Remoting uses the Windows Remote Management (WinRM) protocol, which is Microsoft's implementation of the WS-Management (WSMan) protocol. WinRM operates over HTTP or HTTPS and relies on standards-based protocols for secure communication between the local and remote machines.
+
+    Active Directory Module:
+        The Active Directory module typically communicates with remote domain controllers using LDAP (Lightweight Directory Access Protocol) for querying and modifying Active Directory objects and services. Additionally, RPC (Remote Procedure Call) may be used for certain operations that require direct communication with domain controllers.
 
 
+
+PSDscResources (Desired State Configuration) (uses WinRM): PowerShell Desired State Configuration (DSC) allows you to configure and manage the state of remote computers in a declarative manner. It includes a set of built-in DSC resources (PSDscResources module) for managing various aspects of Windows configuration, such as services, registry settings, and user accounts, on remote machines.  DSC uses WinRM
+
+---------------------------------
+
+PowerShell Empire:
+
+    PowerShell Empire is a post-exploitation framework that includes modules and scripts for performing various offensive security tasks, including remote exploitation, lateral movement, and persistence on compromised systems. While primarily used for security testing and red teaming, it demonstrates the potential for leveraging PowerShell for remote access and control.
+
+
+    PSDscResources (Desired State Configuration):
+        Desired State Configuration (DSC) can use either the Common Information Model (CIM) protocol or Windows Management Instrumentation (WMI) protocol for communication with managed nodes. CIM operates over WSMan, similar to WinRM, while WMI uses DCOM (Distributed Component Object Model) for communication.
+
+    PowerShell Management Libraries:
+        The PowerShell Management Libraries, such as Microsoft.Management.Infrastructure (MI) and System.Management.Automation (SMA), provide APIs and cmdlets for interacting with remote systems using protocols like WSMan for CIM operations or DCOM for WMI operations.
+
+    PowerShell Empire:
+        PowerShell Empire modules typically leverage a combination of PowerShell Remoting (WinRM), SMB (Server Message Block), and other Windows networking protocols for remote exploitation, lateral movement, and communication with compromised systems.
+
+
+ DSC uses WinRM
 
 
 
