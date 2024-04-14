@@ -19,10 +19,50 @@
 * Third-party Remote Access Tools:  TeamViewer, AnyDesk, or LogMeIn. 
 * Group Policy Preferences: Administrators can configure Group Policy Preferences to automatically map network drives, printers, and other resources for users based on their group membership or other criteria when they log in to a domain-joined PC.
                             Relies on SMB (Server Message Block) protocol for accessing and configuring resources on remote computers.
-* Cached Credentials
+* Cached Credentials: Typically relies on the Security Support Provider Interface (SSPI) for authentication and access to cached credentials stored locally on the computer.
 * Remote Desktop Gateway (RD Gateway): RD Gateway is a role service in Windows Server that enables authorized remote users to connect to resources on an internal corporate or private network over the internet, using RDP.
-* Azure Active Directory (Azure AD) Join:
+* Azure Active Directory (Azure AD) Join: Utilizes modern authentication protocols like OAuth 2.0 and OpenID Connect for authentication and authorization.
 * Remote Desktop Web Access (RD Web Access): allows users to access RemoteApp and Desktop Connection through a web browser. Users can launch applications or desktops published on a Remote Desktop Session Host (RD Session Host) 
                                              server without requiring a full RDP connection.
+
+
+DAP (Lightweight Directory Access Protocol): LDAP is used for querying and modifying directory services, such as AD, which stores usr acc information in a domain environment. While not typically used directly for user login, LDAP is fundamental
+                                             for authentication and authorization processes in Windows domains.
+
+SAML (Security Assertion Markup Language): SAML is an XML-based protocol used for exchanging authentication and authorization data between identity providers and service providers. In some scenarios, particularly with 
+federated identity solutions, SAML can be used for single sign-on (SSO) to authenticate users across different domains or applications.
+
+OAuth (Open Authorization): OAuth is an open standard for access delegation commonly used in conjunction with modern web and mobile applications. It allows users to grant third-party applications limited access to their resources 
+without sharing their credentials directly. While not a login protocol in the traditional sense, OAuth facilitates secure access to resources across domains.
+
+OpenID Connect: OpenID Connect is a simple identity layer built on top of OAuth 2.0, providing an authentication layer that enables clients to verify the identity of the end-user based on the authentication performed by an
+authorization server. It is commonly used for single sign-on (SSO) and federated identity scenarios.
+
+Kerberos Constrained Delegation (KCD): KCD is a feature of the Kerberos authentication protocol that allows a service to impersonate a client and access resources on behalf of that client.
+It is commonly used in multi-tier applications where a front-end service needs to access back-end resources on behalf of the user.
+
+OpenID Connect Back-Channel Logout: This protocol allows applications to request that a user be logged out of all relying parties after logging out of one application.
+It enhances security by ensuring that users are fully logged out across all applications in a federated identity scenario.
+
+WS-Federation (Web Services Federation): WS-Federation is a protocol extension to WS-Trust and is often used for federated identity scenarios. 
+3It enables cross-domain authentication and single sign-on between different security domains.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
