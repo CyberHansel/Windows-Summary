@@ -1,22 +1,13 @@
-* Remote Desktop Protocol (RDP): Users can use RDP to connect to a remote PC over a network connection. This requires the user to have appropriate permissions on the remote PC and typically involves providing a username and password.
-   - Used by Remote Desktop Services (RDS), 
-   - Remote Desktop Web Access (RD Web Access) allows users to access RemoteApp and Desktop Connection through a web browser. Users can launch applications or desktops published on a Remote Desktop Session Host
-     (RD Session Host) server without requiring a full RDP connection,
-   - Remote Desktop Gateway (RD Gateway), and direct RDP connections.
-   - 
-
-* Remote Desktop Connection Broker (RD Connection Broker): RD Connection Broker is a role service in Windows Server that enables users to reconnect to their existing sessions in a load-balanced RD Session Host server farm. 
-                                                           It helps ensure session persistence and load balancing for remote desktop connections.
+* Remote Desktop Protocol (RDP)
 
 * Windows PowerShell Remoting: Relies on WS-Management (WSMan) protocol, which uses SOAP over HTTP/HTTPS, for communication between computers.
 PSRemoting:
 - Enter-PSSession, Invoke-Command, and New-PSSession    ; (leverages the WinRM protocol for communication between the local and remote machines) 
 - New-ADUser, Get-ADComputer, and Set-ADUser            ; The Active Directory module (part of the Remote Server Administration Tools) 
- 
-Active Directory module Get-ADUser, Get-ADComputer, Get-ADGroup, New-ADUser, Set-ADUser, etc., use the LDAP protocol to communicate with domain controllers and query or modify Active Directory objects.
 
+* Windows Management Instrumentation (WMI): 
 
-* Windows Management Instrumentation (WMI): remotely manage Windows computers. This requires appropriate permissions and authentication credentials. Uses DCOM (Distributed Component Object Model) for communication between WMI clients and servers.
+remotely manage Windows computers. This requires appropriate permissions and authentication credentials. Uses DCOM (Distributed Component Object Model) for communication between WMI clients and servers.
 * Windows Remote Management (WinRM): WinRM uses the WS-Management protocol (WSMan), which uses SOAP over HTTP/HTTPS
 * Service Accounts:
 * Kerberos Authentication:  Kerberos protocol
@@ -58,6 +49,8 @@ WS-Federation (Web Services Federation): WS-Federation is a protocol extension t
 3It enables cross-domain authentication and single sign-on between different security domains.
 
 
+
+Active Directory module Get-ADUser, Get-ADComputer, Get-ADGroup, New-ADUser, Set-ADUser, etc., use the LDAP protocol to communicate with domain controllers and query or modify Active Directory objects.
 ########
 #######
 #####
